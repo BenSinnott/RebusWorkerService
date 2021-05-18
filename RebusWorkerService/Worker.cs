@@ -38,12 +38,14 @@ namespace RebusWorkerService
             {
                 return ConfigureRebus(rebusConfigurer, busConfig);
             });
+
+            _services.AutoRegisterHandlersFromAssemblyOf<MyHandler>();
         }
 
 
         private RebusConfigurer ConfigureRebus(RebusConfigurer rebusConfigurer, BusConfig busConfig)
         {
-            _services.AutoRegisterHandlersFromAssemblyOf<MyHandler>();
+            
 
             rebusConfigurer.Routing(x =>
                 x.TypeBased()
